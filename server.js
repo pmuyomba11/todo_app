@@ -21,7 +21,16 @@ app.get('/todo', (req, res) => {
         allTasks: tasks
     } )
 })
+//New Route..
+app.get('/todo/new', (req, res) => {
+    res.render('new.ejs')
+})
 
+//CREATE Route..
+app.post('/todo', (req, res) => {
+    tasks.push(req.body);
+    res.redirect('/todo')
+})
 
 //Show Route...
 app.get('/todo/:id', (req, res) => {
