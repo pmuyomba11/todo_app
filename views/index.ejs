@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="..." crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="..." crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Pacifico&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,11 +29,15 @@
 <body>
     <%- include('./partials/nav.ejs') %>
     <section id="banner">
-        <div class="container">
+        <div class="container shadow-lg mx-auto">
             <ul class="flex flex-col justify-center text-center py-6 mx-auto leading-10 font-bold">
                 <% for(let i = 0; i < allTasks.length; i++){%>
                     <li><a class = "hover:bg-blue-200 hover:text-white  hover:font-bold hover:py-2 hover:mx-4 "href="/todo/<%= i; %>"><%= allTasks[i].comments %></a>
                     <a href="/todo/<%= i %>/edit" class="ml-4 text-green-400 shadow-lg ">Edit</a>
+                   <form action="/todo/<%= i %>?_method=DELETE" method="post">
+                    <input type="submit" value="DELETE" class="text-red-200">
+                   
+                   </form>
                     </li>
                     <%} %>
             </ul>

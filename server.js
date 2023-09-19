@@ -26,6 +26,12 @@ app.get('/todo/new', (req, res) => {
     res.render('new.ejs')
 })
 
+//DELETE route...
+app.delete('/todo/:id', (req, res) => {
+    tasks.splice(req.params.id, 1);
+    res.redirect('/todo');
+})
+
 //Update Route..
 app.put('/todo/:id', (req,res) => {
     tasks[req.params.id] = req.body;
