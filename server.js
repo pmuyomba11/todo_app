@@ -26,10 +26,26 @@ app.get('/todo/new', (req, res) => {
     res.render('new.ejs')
 })
 
+//Update Route..
+app.put('/todo/:id', (req,res) => {
+    tasks[req.params.id] = req.body;
+    res.redirect('/todo')
+})
+
 //CREATE Route..
 app.post('/todo', (req, res) => {
     tasks.push(req.body);
     res.redirect('/todo')
+})
+
+//EDIT Route..
+app.get('/todo/:id/edit', (req, res) => {
+    res.render('edit.ejs', {
+        task: tasks[req.params.id],
+        index: req.params.id
+    })
+
+    res.redirect('/todo');
 })
 
 //Show Route...
